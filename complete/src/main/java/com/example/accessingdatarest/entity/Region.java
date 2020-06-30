@@ -1,14 +1,22 @@
 package com.example.accessingdatarest.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
 public class Region {
 
-	private @Id @GeneratedValue Long regionId;
-	private String regionName;
+	private @Id Long regionId;
+	private @Column(length = 25) String regionName;
+
+	public Region() {
+	}
+
+	public Region(Long regionId, String regionName) {
+		this.regionId = regionId;
+		this.regionName = regionName;
+	}
 
 	public Long getRegionId() {
 		return regionId;
