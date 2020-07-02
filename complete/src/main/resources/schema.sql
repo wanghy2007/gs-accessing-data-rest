@@ -65,3 +65,13 @@ CREATE TABLE DEPARTMENTS (
   manager_id NUMBER(6),
   location_id NUMBER(4)
 );
+
+DROP TABLE IF EXISTS JOB_HISTORY;
+
+CREATE TABLE JOB_HISTORY (
+  employee_id NUMBER(6) NOT NULL,
+  start_date DATE NOT NULL,
+  end_date DATE NOT NULL,
+  job_id VARCHAR2(10) NOT NULL,
+  department_id NUMBER(4)
+);

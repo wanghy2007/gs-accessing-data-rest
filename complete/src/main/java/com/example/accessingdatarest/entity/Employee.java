@@ -22,6 +22,8 @@ public class Employee {
 	private @ManyToOne @JoinColumn(name = "job_id", nullable = false) Job job;
 	private @Column(precision = 8, scale = 2) BigDecimal salary;
 	private @Column(precision = 2, scale = 2) BigDecimal commissionPct;
+	private @ManyToOne @JoinColumn(name = "manager_id") Employee manager;
+	private @ManyToOne @JoinColumn(name = "department_id") Department department;
 
 	public BigInteger getEmployeeId() {
 		return employeeId;
@@ -103,6 +105,11 @@ public class Employee {
 		this.manager = manager;
 	}
 
-	private @ManyToOne @JoinColumn(name = "manager_id") Employee manager;
-	// private @ManyToOne @JoinColumn(name = "department_id") Department department;
+	public Department getDepartment() {
+		return department;
+	}
+
+	public void setDepartment(Department department) {
+		this.department = department;
+	}
 }
