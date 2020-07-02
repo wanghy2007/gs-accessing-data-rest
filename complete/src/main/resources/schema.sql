@@ -31,3 +31,12 @@ CREATE TABLE LOCATIONS (
   state_province VARCHAR2(25),
   country_country_id CHAR(2)
 );
+
+DROP TABLE IF EXISTS JOBS;
+
+CREATE TABLE JOBS (
+  job_id VARCHAR2(10) PRIMARY KEY,
+  job_title VARCHAR2(35) NOT NULL,
+  min_salary NUMBER(6),
+  max_salary NUMBER(6)
+);
