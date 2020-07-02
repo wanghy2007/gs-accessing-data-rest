@@ -56,3 +56,12 @@ CREATE TABLE EMPLOYEES (
   manager_id NUMBER(6),
   department_id NUMBER(4)
 );
+
+DROP TABLE IF EXISTS DEPARTMENTS;
+
+CREATE TABLE DEPARTMENTS (
+  department_id NUMBER(4) PRIMARY KEY,
+  department_name VARCHAR2(30) NOT NULL,
+  manager_id NUMBER(6),
+  location_id NUMBER(4)
+);
