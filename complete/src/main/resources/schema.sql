@@ -20,3 +20,14 @@ CREATE TABLE COUNTRIES (
   country_name VARCHAR2(40),
   region_region_id NUMBER
 );
+
+DROP TABLE IF EXISTS LOCATIONS;
+
+CREATE TABLE LOCATIONS (
+  location_id NUMBER PRIMARY KEY,
+  street_address VARCHAR2(40),
+  postal_code VARCHAR2(12),
+  city VARCHAR2(30) NOT NULL,
+  state_province VARCHAR2(25),
+  country_country_id CHAR(2)
+);
