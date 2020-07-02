@@ -3,23 +3,15 @@ package com.example.accessingdatarest.entity;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity(name = "Countries")
 public class Country {
 
-	private @Id @Column(length = 2) String countryId;
+	private @Id @Column(length = 2, nullable = false) String countryId;
 	private @Column(length = 40) String countryName;
-	private @ManyToOne Region region;
-
-	public Country() {
-	}
-
-	public Country(String countryId, String countryName, Region region) {
-		this.countryId = countryId;
-		this.countryName = countryName;
-		this.region = region;
-	}
+	private @ManyToOne @JoinColumn(name = "region_id") Region region;
 
 	public String getCountryId() {
 		return countryId;

@@ -1,38 +1,28 @@
 package com.example.accessingdatarest.entity;
 
+import java.math.BigInteger;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity(name = "Locations")
 public class Location {
 
-	private @Id Long locationId;
+	private @Id @Column(nullable = false) BigInteger locationId;
 	private @Column(length = 40) String streetAddress;
 	private @Column(length = 12) String postalCode;
 	private @Column(length = 30, nullable = false) String city;
 	private @Column(length = 25) String stateProvince;
-	private @ManyToOne Country country;
+	private @ManyToOne @JoinColumn(name = "country_id") Country country;
 
-	public Location() {
-	}
-
-	public Location(Long locationId, String streetAddress, String postalCode, String city, String stateProvince,
-			Country country) {
-		this.locationId = locationId;
-		this.streetAddress = streetAddress;
-		this.postalCode = postalCode;
-		this.city = city;
-		this.stateProvince = stateProvince;
-		this.country = country;
-	}
-
-	public Long getLocationId() {
+	public BigInteger getLocationId() {
 		return locationId;
 	}
 
-	public void setLocationId(Long locationId) {
+	public void setLocationId(BigInteger locationId) {
 		this.locationId = locationId;
 	}
 

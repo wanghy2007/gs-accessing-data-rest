@@ -1,5 +1,7 @@
 package com.example.accessingdatarest.entity;
 
+import java.math.BigInteger;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -7,10 +9,10 @@ import javax.persistence.Id;
 @Entity(name = "Jobs")
 public class Job {
 
-	private @Id String jobId;
+	private @Id @Column(nullable = false) String jobId;
 	private @Column(length = 35, nullable = false) String jobTitle;
-	private Integer minSalary;
-	private Integer maxSalary;
+	private @Column(precision = 6) BigInteger minSalary;
+	private @Column(precision = 6) BigInteger maxSalary;
 
 	public String getJobId() {
 		return jobId;
@@ -28,19 +30,19 @@ public class Job {
 		this.jobTitle = jobTitle;
 	}
 
-	public Integer getMinSalary() {
+	public BigInteger getMinSalary() {
 		return minSalary;
 	}
 
-	public void setMinSalary(Integer minSalary) {
+	public void setMinSalary(BigInteger minSalary) {
 		this.minSalary = minSalary;
 	}
 
-	public Integer getMaxSalary() {
+	public BigInteger getMaxSalary() {
 		return maxSalary;
 	}
 
-	public void setMaxSalary(Integer maxSalary) {
+	public void setMaxSalary(BigInteger maxSalary) {
 		this.maxSalary = maxSalary;
 	}
 }

@@ -18,7 +18,7 @@ DROP TABLE IF EXISTS COUNTRIES;
 CREATE TABLE COUNTRIES (
   country_id CHAR(2) PRIMARY KEY,
   country_name VARCHAR2(40),
-  region_region_id NUMBER
+  region_id NUMBER
 );
 
 DROP TABLE IF EXISTS LOCATIONS;
@@ -29,7 +29,7 @@ CREATE TABLE LOCATIONS (
   postal_code VARCHAR2(12),
   city VARCHAR2(30) NOT NULL,
   state_province VARCHAR2(25),
-  country_country_id CHAR(2)
+  country_id CHAR(2)
 );
 
 DROP TABLE IF EXISTS JOBS;
@@ -39,4 +39,20 @@ CREATE TABLE JOBS (
   job_title VARCHAR2(35) NOT NULL,
   min_salary NUMBER(6),
   max_salary NUMBER(6)
+);
+
+DROP TABLE IF EXISTS EMPLOYEES;
+
+CREATE TABLE EMPLOYEES (
+  employee_id NUMBER(6) PRIMARY KEY,
+  first_name VARCHAR2(20),
+  last_name VARCHAR2(25) NOT NULL,
+  email VARCHAR2(25) NOT NULL,
+  phone_number VARCHAR2(20),
+  hire_date DATE NOT NULL,
+  job_id VARCHAR2(10) NOT NULL,
+  salary NUMBER(8,2),
+  commission_pct NUMBER(2,2),
+  manager_id NUMBER(6),
+  department_id NUMBER(4)
 );

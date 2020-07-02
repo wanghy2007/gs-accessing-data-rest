@@ -1,5 +1,7 @@
 package com.example.accessingdatarest.entity;
 
+import java.math.BigInteger;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -7,22 +9,14 @@ import javax.persistence.Id;
 @Entity(name = "Regions")
 public class Region {
 
-	private @Id Long regionId;
+	private @Id @Column(nullable = false) BigInteger regionId;
 	private @Column(length = 25) String regionName;
 
-	public Region() {
-	}
-
-	public Region(Long regionId, String regionName) {
-		this.regionId = regionId;
-		this.regionName = regionName;
-	}
-
-	public Long getRegionId() {
+	public BigInteger getRegionId() {
 		return regionId;
 	}
 
-	public void setRegionId(Long regionId) {
+	public void setRegionId(BigInteger regionId) {
 		this.regionId = regionId;
 	}
 
