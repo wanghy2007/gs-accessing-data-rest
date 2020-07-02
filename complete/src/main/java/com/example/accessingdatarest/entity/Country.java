@@ -5,7 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
-@Entity
+@Entity(name = "Countries")
 public class Country {
 
 	private @Id @Column(length = 2) String countryId;
