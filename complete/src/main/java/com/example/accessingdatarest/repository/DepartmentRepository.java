@@ -9,5 +9,5 @@ import com.example.accessingdatarest.entity.Department;
 
 @RepositoryRestResource(collectionResourceRel = "departments", path = "departments")
 public interface DepartmentRepository extends PagingAndSortingRepository<Department, BigInteger> {
-
+	
 }

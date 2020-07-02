@@ -10,6 +10,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import java.math.BigInteger;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,74 +20,76 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 
-import com.example.accessingdatarest.repository.CountryRepository;
+import com.example.accessingdatarest.repository.DepartmentRepository;
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class CountryRepositoryTests {
+public class DepartmentRepositoryTests {
 
 	@Autowired
 	private MockMvc mockMvc;
 
 	@Autowired
-	private CountryRepository countryRepository;
+	private DepartmentRepository departmentRepository;
 
 	@BeforeEach
 	public void deleteAllBeforeTests() throws Exception {
-		countryRepository.findById("TT").ifPresent(country -> countryRepository.delete(country));
+		departmentRepository.findById(BigInteger.ZERO).ifPresent(department -> departmentRepository.delete(department));
 	}
 
 	@Test
 	public void shouldReturnRepositoryIndex() throws Exception {
-		mockMvc.perform(get("/")).andExpect(status().isOk()).andExpect(jsonPath("$._links.countries").exists());
+		mockMvc.perform(get("/")).andExpect(status().isOk()).andExpect(jsonPath("$._links.departments").exists());
 	}
 
 	@Test
 	public void shouldCreateEntity() throws Exception {
-		mockMvc.perform(post("/countries").content("{\"countryId\":\"TT\", \"countryName\":\"Test\"}"))
-				.andExpect(status().isCreated()).andExpect(header().string("Location", containsString("countries")));
+		mockMvc.perform(post("/departments").content("{\"departmentId\":\"0\", \"departmentName\":\"Test\"}"))
+				.andExpect(status().isCreated()).andExpect(header().string("Location", containsString("departments")));
 	}
 
 	@Test
 	public void shouldRetrieveEntity() throws Exception {
 		MvcResult mvcResult = mockMvc
-				.perform(post("/countries").content("{\"countryId\":\"TT\", \"countryName\":\"Test\"}"))
+				.perform(post("/departments").content("{\"departmentId\":\"0\", \"departmentName\":\"Test\"}"))
 				.andExpect(status().isCreated()).andReturn();
 
 		String location = mvcResult.getResponse().getHeader("Location");
-		mockMvc.perform(get(location)).andExpect(status().isOk()).andExpect(jsonPath("$.countryName").value("Test"));
+		mockMvc.perform(get(location)).andExpect(status().isOk()).andExpect(jsonPath("$.departmentName").value("Test"));
 	}
 
 	@Test
 	public void shouldUpdateEntity() throws Exception {
 		MvcResult mvcResult = mockMvc
-				.perform(post("/countries").content("{\"countryId\":\"TT\", \"countryName\":\"Test\"}"))
+				.perform(post("/departments").content("{\"departmentId\":\"0\", \"departmentName\":\"Test\"}"))
 				.andExpect(status().isCreated()).andReturn();
 
 		String location = mvcResult.getResponse().getHeader("Location");
 
-		mockMvc.perform(put(location).content("{\"countryName\":\"Test1\"}")).andExpect(status().isNoContent());
+		mockMvc.perform(put(location).content("{\"departmentName\":\"Test1\"}")).andExpect(status().isNoContent());
 
-		mockMvc.perform(get(location)).andExpect(status().isOk()).andExpect(jsonPath("$.countryName").value("Test1"));
+		mockMvc.perform(get(location)).andExpect(status().isOk())
+				.andExpect(jsonPath("$.departmentName").value("Test1"));
 	}
 
 	@Test
 	public void shouldPartiallyUpdateEntity() throws Exception {
 		MvcResult mvcResult = mockMvc
-				.perform(post("/countries").content("{\"countryId\":\"TT\", \"countryName\":\"Test\"}"))
+				.perform(post("/departments").content("{\"departmentId\":\"0\", \"departmentName\":\"Test\"}"))
 				.andExpect(status().isCreated()).andReturn();
 
 		String location = mvcResult.getResponse().getHeader("Location");
 
-		mockMvc.perform(patch(location).content("{\"countryName\":\"Test1\"}")).andExpect(status().isNoContent());
+		mockMvc.perform(patch(location).content("{\"departmentName\":\"Test1\"}")).andExpect(status().isNoContent());
 
-		mockMvc.perform(get(location)).andExpect(status().isOk()).andExpect(jsonPath("$.countryName").value("Test1"));
+		mockMvc.perform(get(location)).andExpect(status().isOk())
+				.andExpect(jsonPath("$.departmentName").value("Test1"));
 	}
 
 	@Test
 	public void shouldDeleteEntity() throws Exception {
 		MvcResult mvcResult = mockMvc
-				.perform(post("/countries").content("{\"countryId\":\"TT\", \"countryName\":\"Test\"}"))
+				.perform(post("/departments").content("{\"departmentId\":\"0\", \"departmentName\":\"Test\"}"))
 				.andExpect(status().isCreated()).andReturn();
 
 		String location = mvcResult.getResponse().getHeader("Location");
