@@ -10,20 +10,48 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Entity(name = "Employees")
 public class Employee {
 
-	private @Id @Column(precision = 6, nullable = false) BigInteger employeeId;
-	private @Column(length = 20) String firstName;
-	private @Column(length = 25, nullable = false) String lastName;
-	private @Column(length = 25, nullable = false) String email;
-	private @Column(length = 20) String phoneNumber;
-	private @Column(nullable = false) Date hireDate;
-	private @ManyToOne @JoinColumn(name = "job_id", nullable = false) Job job;
-	private @Column(precision = 8, scale = 2) BigDecimal salary;
-	private @Column(precision = 2, scale = 2) BigDecimal commissionPct;
-	private @ManyToOne @JoinColumn(name = "manager_id") Employee manager;
-	private @ManyToOne @JoinColumn(name = "department_id") Department department;
+	@Id
+	@Column(precision = 6, nullable = false)
+	private BigInteger employeeId;
+
+	@Column(length = 20)
+	private String firstName;
+
+	@Column(length = 25, nullable = false)
+	private String lastName;
+
+	@Column(length = 25, nullable = false)
+	private String email;
+
+	@Column(length = 20)
+	private String phoneNumber;
+
+	@Column(nullable = false)
+	@JsonFormat(pattern = "yyyy-MM-dd", timezone = "America/Vancouver")
+	private Date hireDate;
+
+	@ManyToOne
+	@JoinColumn(name = "job_id", nullable = false)
+	private Job job;
+
+	@Column(precision = 8, scale = 2)
+	private BigDecimal salary;
+
+	@Column(precision = 2, scale = 2)
+	private BigDecimal commissionPct;
+
+	@ManyToOne
+	@JoinColumn(name = "manager_id")
+	private Employee manager;
+
+	@ManyToOne
+	@JoinColumn(name = "department_id")
+	private Department department;
 
 	public BigInteger getEmployeeId() {
 		return employeeId;
