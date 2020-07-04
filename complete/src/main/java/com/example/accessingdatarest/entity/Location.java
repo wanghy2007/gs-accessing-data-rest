@@ -11,12 +11,25 @@ import javax.persistence.ManyToOne;
 @Entity(name = "Locations")
 public class Location {
 
-	private @Id @Column(nullable = false) BigInteger locationId;
-	private @Column(length = 40) String streetAddress;
-	private @Column(length = 12) String postalCode;
-	private @Column(length = 30, nullable = false) String city;
-	private @Column(length = 25) String stateProvince;
-	private @ManyToOne @JoinColumn(name = "country_id") Country country;
+	@Id
+	@Column(nullable = false)
+	private BigInteger locationId;
+
+	@Column(length = 40)
+	private String streetAddress;
+
+	@Column(length = 12)
+	private String postalCode;
+
+	@Column(length = 30, nullable = false)
+	private String city;
+
+	@Column(length = 25)
+	private String stateProvince;
+
+	@ManyToOne
+	@JoinColumn(name = "country_id")
+	private Country country;
 
 	public BigInteger getLocationId() {
 		return locationId;
@@ -65,5 +78,4 @@ public class Location {
 	public void setCountry(Country country) {
 		this.country = country;
 	}
-
 }

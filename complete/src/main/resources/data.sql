@@ -2004,30 +2004,35 @@ INSERT INTO employees VALUES
         );
 
 INSERT INTO job_history
+(employee_id,start_date,end_date,job_id,department_id)
 VALUES (102
        , TO_DATE('13-JAN-1993', 'dd-MON-yyyy')
        , TO_DATE('24-JUL-1998', 'dd-MON-yyyy')
        , 'IT_PROG'
        , 60);
 INSERT INTO job_history
+(employee_id,start_date,end_date,job_id,department_id)
 VALUES (101
        , TO_DATE('21-SEP-1989', 'dd-MON-yyyy')
        , TO_DATE('27-OCT-1993', 'dd-MON-yyyy')
        , 'AC_ACCOUNT'
        , 110);
 INSERT INTO job_history
+(employee_id,start_date,end_date,job_id,department_id)
 VALUES (101
        , TO_DATE('28-OCT-1993', 'dd-MON-yyyy')
        , TO_DATE('15-MAR-1997', 'dd-MON-yyyy')
        , 'AC_MGR'
        , 110);
 INSERT INTO job_history
+(employee_id,start_date,end_date,job_id,department_id)
 VALUES (201
        , TO_DATE('17-FEB-1996', 'dd-MON-yyyy')
        , TO_DATE('19-DEC-1999', 'dd-MON-yyyy')
        , 'MK_REP'
        , 20);
 INSERT INTO job_history
+(employee_id,start_date,end_date,job_id,department_id)
 VALUES  (114
         , TO_DATE('24-MAR-1998', 'dd-MON-yyyy')
         , TO_DATE('31-DEC-1999', 'dd-MON-yyyy')
@@ -2035,6 +2040,7 @@ VALUES  (114
         , 50
         );
 INSERT INTO job_history
+(employee_id,start_date,end_date,job_id,department_id)
 VALUES  (122
         , TO_DATE('01-JAN-1999', 'dd-MON-yyyy')
         , TO_DATE('31-DEC-1999', 'dd-MON-yyyy')
@@ -2042,6 +2048,7 @@ VALUES  (122
         , 50
         );
 INSERT INTO job_history
+(employee_id,start_date,end_date,job_id,department_id)
 VALUES  (200
         , TO_DATE('17-SEP-1987', 'dd-MON-yyyy')
         , TO_DATE('17-JUN-1993', 'dd-MON-yyyy')
@@ -2049,6 +2056,7 @@ VALUES  (200
         , 90
         );
 INSERT INTO job_history
+(employee_id,start_date,end_date,job_id,department_id)
 VALUES  (176
         , TO_DATE('24-MAR-1998', 'dd-MON-yyyy')
         , TO_DATE('31-DEC-1998', 'dd-MON-yyyy')
@@ -2056,6 +2064,7 @@ VALUES  (176
         , 80
         );
 INSERT INTO job_history
+(employee_id,start_date,end_date,job_id,department_id)
 VALUES  (176
         , TO_DATE('01-JAN-1999', 'dd-MON-yyyy')
         , TO_DATE('31-DEC-1999', 'dd-MON-yyyy')
@@ -2063,6 +2072,7 @@ VALUES  (176
         , 80
         );
 INSERT INTO job_history
+(employee_id,start_date,end_date,job_id,department_id)
 VALUES  (200
         , TO_DATE('01-JUL-1994', 'dd-MON-yyyy')
         , TO_DATE('31-DEC-1998', 'dd-MON-yyyy')

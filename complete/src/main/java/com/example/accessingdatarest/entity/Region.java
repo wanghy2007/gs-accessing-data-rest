@@ -9,8 +9,12 @@ import javax.persistence.Id;
 @Entity(name = "Regions")
 public class Region {
 
-	private @Id @Column(nullable = false) BigInteger regionId;
-	private @Column(length = 25) String regionName;
+	@Id
+	@Column(nullable = false)
+	private BigInteger regionId;
+
+	@Column(length = 25)
+	private String regionName;
 
 	public BigInteger getRegionId() {
 		return regionId;

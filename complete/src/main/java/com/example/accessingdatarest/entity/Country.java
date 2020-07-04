@@ -9,9 +9,16 @@ import javax.persistence.ManyToOne;
 @Entity(name = "Countries")
 public class Country {
 
-	private @Id @Column(length = 2, nullable = false) String countryId;
-	private @Column(length = 40) String countryName;
-	private @ManyToOne @JoinColumn(name = "region_id") Region region;
+	@Id
+	@Column(length = 2, nullable = false)
+	private String countryId;
+
+	@Column(length = 40)
+	private String countryName;
+
+	@ManyToOne
+	@JoinColumn(name = "region_id")
+	private Region region;
 
 	public String getCountryId() {
 		return countryId;

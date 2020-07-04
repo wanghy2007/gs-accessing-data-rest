@@ -4,20 +4,40 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Entity
-@IdClass(JobHistoryKey.class)
 public class JobHistory {
 
-	private @Id @ManyToOne @JoinColumn(name = "employee_id", nullable = false) Employee employee;
-	private @Column(nullable = false) Date startDate;
-	private @Column(nullable = false) Date endDate;
-	private @Id @ManyToOne @JoinColumn(name = "job_id", nullable = false) Job job;
-	private @Id @ManyToOne @JoinColumn(name = "department_id") Department department;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long id;
+
+	@ManyToOne
+	@JoinColumn(name = "employee_id", nullable = false)
+	private Employee employee;
+
+	@Column(nullable = false)
+	@JsonFormat(pattern = "yyyy-MM-dd", timezone = "America/Vancouver")
+	private Date startDate;
+
+	@Column(nullable = false)
+	@JsonFormat(pattern = "yyyy-MM-dd", timezone = "America/Vancouver")
+	private Date endDate;
+
+	@ManyToOne
+	@JoinColumn(name = "job_id", nullable = false)
+	private Job job;
+
+	@ManyToOne
+	@JoinColumn(name = "department_id")
+	private Department department;
 
 	public Employee getEmployee() {
 		return employee;

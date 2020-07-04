@@ -9,10 +9,18 @@ import javax.persistence.Id;
 @Entity(name = "Jobs")
 public class Job {
 
-	private @Id @Column(nullable = false) String jobId;
-	private @Column(length = 35, nullable = false) String jobTitle;
-	private @Column(precision = 6) BigInteger minSalary;
-	private @Column(precision = 6) BigInteger maxSalary;
+	@Id
+	@Column(nullable = false)
+	private String jobId;
+
+	@Column(length = 35, nullable = false)
+	private String jobTitle;
+
+	@Column(precision = 6)
+	private BigInteger minSalary;
+
+	@Column(precision = 6)
+	private BigInteger maxSalary;
 
 	public String getJobId() {
 		return jobId;

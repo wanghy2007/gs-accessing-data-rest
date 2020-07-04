@@ -11,10 +11,20 @@ import javax.persistence.ManyToOne;
 @Entity(name = "Departments")
 public class Department {
 
-	private @Id @Column(precision = 4, nullable = false) BigInteger departmentId;
-	private @Column(length = 30, nullable = false) String departmentName;
-	private @ManyToOne @JoinColumn(name = "manager_id") Employee manager;
-	private @ManyToOne @JoinColumn(name = "location_id") Location location;
+	@Id
+	@Column(precision = 4, nullable = false)
+	private BigInteger departmentId;
+
+	@Column(length = 30, nullable = false)
+	private String departmentName;
+
+	@ManyToOne
+	@JoinColumn(name = "manager_id")
+	private Employee manager;
+
+	@ManyToOne
+	@JoinColumn(name = "location_id")
+	private Location location;
 
 	public BigInteger getDepartmentId() {
 		return departmentId;
