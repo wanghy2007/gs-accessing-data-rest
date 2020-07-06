@@ -69,7 +69,7 @@ public class JobRepositoryTests {
 		String location = mvcResult.getResponse().getHeader("Location");
 
 		mockMvc.perform(put(location).content(
-				"{\"jobId\":\"NIL1\",\"jobTitle\":\"Nil1\",\"minSalary\":\"100001\",\"maxSalary\":\"200001\"}"))
+				"{\"jobId\":\"NIL\",\"jobTitle\":\"Nil1\",\"minSalary\":\"100001\",\"maxSalary\":\"200001\"}"))
 				.andExpect(status().isNoContent());
 
 		mockMvc.perform(get(location)).andExpect(status().isOk()).andExpect(jsonPath("$.jobTitle").value("Nil1"))
